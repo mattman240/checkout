@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import CreateAccount from './account.jsx';
 
+
 const Checkout = ({ match }) => (
   <div>
     <h3>{match.params.topicId}</h3>
-    <CreateAccount />
   </div>
 )
 
@@ -14,7 +14,7 @@ const Checkouts = ({ match }) => (
     <h2>Checkout</h2>
     <ul>
       <li>
-        <Link to={`${match.url}/Create Account`}>
+        <Link to={`/create account`}>
           Create An Account
         </Link>
       </li>

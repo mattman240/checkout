@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ShippingBilling from './shipping.jsx'
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -31,21 +30,21 @@ class CreateAccount extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           First Name:
-          <input type="text" value={this.state.firstName} onChange={(event) => { this.handleChange(event, 'firstName'); }} />
+          <input type="text" value={this.state.firstName} onChange={(event) => { this.handleChange(event, 'firstName'); }} /><br />
         </label>
         <label>
           Last Name:
-          <input type="text" value={this.state.lastName} onChange={(event) => { this.handleChange(event, 'lastName'); }} />
+          <input type="text" value={this.state.lastName} onChange={(event) => { this.handleChange(event, 'lastName'); }} /><br />
         </label>
         <label>
           Email:
-          <input type="text" value={this.state.email} onChange={(event) => { this.handleChange(event, 'email'); }} />
+          <input type="text" value={this.state.email} onChange={(event) => { this.handleChange(event, 'email'); }} /><br />
         </label>
         <label>
           Password:
           <input type="text" value={this.state.password} onChange={(event) => { this.handleChange(event, 'password'); }} />
         </label>
-        <button><Link to="/checkout/Shipping and Billing">Continue</Link></button>
+        <button><Link to="/billing">Continue</Link></button>
       </form>
     );
   }
