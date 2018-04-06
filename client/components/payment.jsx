@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import saveData from '../saveData.js'
 
 class Payment extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Payment extends React.Component {
       creditCard: '',
       experation: '',
       cvv: '',
-      billingZip: '',
+      zip: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,13 +22,13 @@ class Payment extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
+    saveData(this.state, '/payments');
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <label>
           Card Number:
           <input type="text" value={this.state.creditCard} onChange={(event) => { this.handleChange(event, 'creditCard'); }} /><br />
@@ -42,9 +43,9 @@ class Payment extends React.Component {
         </label>
         <label>
           Billing Zip Code:
-          <input type="text" value={this.state.billingZip} onChange={(event) => { this.handleChange(event, 'billingZip'); }} />
+          <input type="text" value={this.state.billingZip} onChange={(event) => { this.handleChange(event, 'zip'); }} />
         </label>
-        <button><Link to="/checkout">Purchase</Link></button>
+        <button onClick={this.handleSubmit}><Link to="/checkout">Purchase</Link></button>
       </form>
     );
   }

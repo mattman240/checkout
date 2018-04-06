@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import saveData from '../saveData.js'
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -21,13 +22,13 @@ class CreateAccount extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
+    saveData(this.state, '/accounts');
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <label>
           First Name:
           <input type="text" value={this.state.firstName} onChange={(event) => { this.handleChange(event, 'firstName'); }} /><br />
@@ -44,7 +45,7 @@ class CreateAccount extends React.Component {
           Password:
           <input type="text" value={this.state.password} onChange={(event) => { this.handleChange(event, 'password'); }} />
         </label>
-        <button><Link to="/billing">Continue</Link></button>
+        <button onClick={this.handleSubmit}><Link to="/billing">Continue</Link></button>
       </form>
     );
   }

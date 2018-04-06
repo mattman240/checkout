@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import saveData from '../saveData.js'
 
 class ShippingBilling extends React.Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class ShippingBilling extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
+    saveData(this.state, '/shipping');
   }
 
   render() {
@@ -49,7 +50,7 @@ class ShippingBilling extends React.Component {
           Zip Code:
           <input type="text" value={this.state.zip} onChange={(event) => { this.handleChange(event, 'zip'); }} />
         </label>
-        <button><Link to="/payment">Continue</Link></button>
+        <button onClick={this.handleSubmit}><Link to="/payment">Continue</Link></button>
       </form>
     );
   }
